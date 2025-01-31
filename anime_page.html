@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Episode</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            margin: 0;
+            padding-top: 70px;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #ff6a00, #ee0979);
+            color: white;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-container h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .header-container h1 a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-bar input {
+            padding: 8px;
+            border-radius: 25px;
+            border: 1px solid #ccc;
+            outline: none;
+            width: 220px;
+            transition: all 0.3s;
+        }
+
+        .search-bar input:focus {
+            width: 250px;
+            border-color: #ff6a00;
+        }
+
+        .search-bar button {
+            background-color: #ff6a00;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #ee0979;
+        }
+
+        .search-results {
+            background-color: #1e1e1e;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-results ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .search-results li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: #2a2a2a;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .search-results li:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-results img {
+            width: 70px;
+            height: 70px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .search-results a {
+            text-decoration: none;
+            color: #ff6a00;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .search-results a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .video-section {
+            flex: 3;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        iframe {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .anime-description {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: white;
+            text-align: center;
+        }
+
+        .season-list {
+            flex: 1;
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            max-height: 600px;
+            overflow-y: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .season-list h3 {
+            color: #ff6a00;
+            margin-bottom: 20px;
+        }
+
+        .season-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .season-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            padding: 15px;
+        }
+
+        .season-list a {
+            text-decoration: none;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            border-radius: 25px;
+            position: relative;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .season-list a:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .season-list img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            margin-right: 15px;
+            border-radius: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .video-section {
+                flex: none;
+                width: 100%;
+            }
+
+            .season-list {
+                flex: none;
+                width: 100%;
+            }
+
+            .search-bar input {
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1><a href="index.html">Anime Watch</a></h1>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search anime...">
+                <button onclick="performSearch()">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="search-results" id="search-results" style="display: none;"></div>
+
+    <div class="container">
+        <!-- Video Section -->
+        <div class="video-section">
+            <h1 id="anime-title"></h1>
+            <h2 id="season-title"></h2>
+            <iframe id="anime-video" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+
+            <!-- Description under the video -->
+            <div class="anime-description" id="anime-description"></div>
+        </div>
+
+        <!-- Season List Section -->
+        <div class="season-list">
+            <h3>Seasons</h3>
+            <ul id="season-list"></ul>
+
+            <!-- Films Section (only if films exist in the JSON) -->
+            <div id="films-section" style="display: none;">
+                <h3>Films</h3>
+                <ul id="films-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function performSearch() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const searchResults = document.getElementById('search-results');
+
+            fetch('anime_data.json')
+                .then(response => response.json())
+                .then(data => {
+                    const results = data.filter(anime => anime.title.toLowerCase().includes(query));
+
+                    if (results.length > 0) {
+                        searchResults.style.display = 'block';
+                        searchResults.innerHTML = '<ul>' + results.map(anime => `
+                            <li>
+                                <img src="${anime.icon}" alt="${anime.title}">
+                                <a href="anime_page.html?title=${encodeURIComponent(anime.title)}&season=0&episode=0">${anime.title}</a>
+                            </li>
+                        `).join('') + '</ul>';
+                    } else {
+                        searchResults.style.display = 'block';
+                        searchResults.innerHTML = '<p>No results found</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching anime data:', error);
+                });
+        }
+
+        fetch('anime_data.json')
+            .then(response => response.json())
+            .then(data => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const animeTitle = urlParams.get('title');
+                const seasonIndex = parseInt(urlParams.get('season')) || 0;
+
+                const anime = data.find(a => a.title === animeTitle);
+
+                if (anime) {
+                    const season = anime.seasons[seasonIndex];
+
+                    // Set the anime and season info
+                    document.getElementById('anime-title').textContent = anime.title;
+                    document.getElementById('season-title').textContent = season.title;
+                    document.getElementById('anime-video').src = season.kodikUrl;
+
+                    // Display the anime description under the video
+                    document.getElementById('anime-description').textContent = anime.videoDescription;
+
+                    // Update background image of the page
+                    document.body.style.backgroundImage = `url(${anime.backgroundImage})`;
+
+                    // Update the season list
+                    const seasonList = document.getElementById('season-list');
+                    seasonList.innerHTML = '';
+                    anime.seasons.forEach((s, index) => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `
+                            <a href="anime_page.html?title=${encodeURIComponent(animeTitle)}&season=${index}">
+                                <img src="${s.image}" alt="${s.title}">
+                                <span>${s.title}</span>
+                            </a>
+                        `;
+                        seasonList.appendChild(li);
+                    });
+
+                    // Check if films exist and display them
+                    if (anime.films && anime.films.length > 0) {
+                        const filmsSection = document.getElementById('films-section');
+                        const filmsList = document.getElementById('films-list');
+                        filmsList.innerHTML = ''; // Clear previous films
+                        filmsSection.style.display = 'block'; // Show films section
+
+                        // Create list items for films
+                        anime.films.forEach(film => {
+                            const filmItem = document.createElement('li');
+                            filmItem.innerHTML = `
+                                <a href="#" onclick="loadFilm('${film.kodikUrl}')">
+                                    <img src="${film.image}" alt="${film.title}">
+                                    <span>${film.title}</span>
+                                </a>
+                            `;
+                            filmsList.appendChild(filmItem);
+                        });
+                    } else {
+                        document.getElementById('films-section').style.display = 'none';
+                    }
+                } else {
+                    document.body.innerHTML = '<h1>Anime not found</h1>';
+                }
+            })
+            .catch(error => {
+                console.error('Error loading anime data:', error);
+            });
+        
+        // Function to load a film in the video player
+        function loadFilm(kodikUrl) {
+            const videoPlayer = document.getElementById('anime-video');
+            videoPlayer.src = kodikUrl;  // Change the video URL to the selected film's URL
+        }
+    </script>
+</body>
+</html>
