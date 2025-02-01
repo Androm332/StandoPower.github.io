@@ -1,0 +1,147 @@
+[
+    {
+        "title": "JoJo's Bizarre Adventure",
+        "icon": "images/anime1.jpg",
+        "image": "images/anime1.jpg",
+        "description": "An epic tale of family legacy and bizarre powers.",
+        "videoDescription": "JoJo's Bizarre Adventure follows the adventures of the Joestar family, whose members discover they are destined to take down supernatural forces.",
+        "backgroundImage": "images/jojo-background.jpg",
+        "seasons": [
+            {
+                "title": "Season 1: Phantom Blood",
+                "image": "images/Season 1 jojo.jpg",
+                "kodikUrl": "https://kodik.info/serial/30337/b9352c0d1001c7b6719d1c568e55b245/720p"
+            },
+            {
+                "title": "Season 2: Battle Tendency",
+                "image": "images/Season 2 jojo.jpg",
+                "kodikUrl": "https://kodik.info/serial/30338/685cb4c3aa7267b7ceb847ee54b9dda7/720p"
+            },
+            {
+                "title": "Season 3: Stardust Crusaders",
+                "image": "images/Season 3 jojo.jpg",
+                "kodikUrl": "https://kodik.info/serial/30339/c902f09761ccacf9ace9392556b1c870/720p"
+            },
+            {
+                "title": "Season 4: Diamond is Unbreakable",
+                "image": "images/Season 4 jojo.jpg",
+                "kodikUrl": "https://kodik.info/serial/31813/1e84a6058c72965391fca69261458b65/720p"
+            },
+            {
+                "title": "Season 5: Golden Wind",
+                "image": "images/Season 5 jojo.jpg",
+                "kodikUrl": "https://kodik.info/serial/40311/128cfe811d84d8b1544e2d1c7e358e3b/720p"
+            },
+            {
+                "title": "Season 6: Stone Ocean: Part 1",
+                "image": "images/Season 6 jojo.jpg",
+                "kodikUrl": "https://kodik.info/serial/39269/a6b46f9082f0d6f9c1a3e7e583dd98ad/720p"
+            },
+            {
+                "title": "Season 6: Stone Ocean: Part 2",
+                "image": "images/Season 6 jojo.jpg",
+                "kodikUrl": "https://kodik.info/serial/46134/8bc5cd35cff54786f901edc41c1544c7/720p"
+            },
+            {
+                "title": "Season 6: Stone Ocean: Part 3",
+                "image": "images/Season 6 jojo.jpg",
+                "kodikUrl": "https://kodik.info/serial/47276/f8a0e71b7f8492dfc3f0966c5664fc10/720p"
+            }
+        ]
+    },
+    {
+        "title": "Naruto",
+        "icon": "images/naruto-icon.jpg",
+        "image": "images/naruto-icon.jpg",
+        "description": "The journey of Naruto Uzumaki, a young ninja who seeks recognition from his peers and dreams of becoming the Hokage, the village leader.",
+        "videoDescription": "Naruto's story follows his rise from a mischievous orphan to a skilled ninja determined to protect his village and bring peace to the world.",
+        "backgroundImage": "images/naruto-background.jpg",
+        "seasons": [
+            {
+                "title": "Season 1: Naruto",
+                "image": "images/season-1-naruto.jpg",
+                "kodikUrl": "https://kodik.info/serial/6646/4698b2bea53c04aa757d3d1ff42fea53/720p"
+            },
+            {
+                "title": "Season 2: Naruto Shippuden",
+                "image": "images/season-2-naruto.jpg",
+                "kodikUrl": "https://kodik.info/serial/39719/41d91a6dc39957f0b481a2466179dcc1/720p"
+            },
+            {
+                "title": "Season 3: Boruto: Naruto Next Generations",
+                "image": "images/season-5-naruto.jpg",
+                "kodikUrl": "https://kodik.info/serial/3566/0bbd4431145327c55826f8a11f81b807/720p"
+            }
+        ],
+        "films": [
+            {
+                "title": "Naruto the Movie: Ninja Clash in the Land of Snow",
+                "image": "images/naruto-movie-1.jpg",
+                "kodikUrl": "https://kodik.info/video/47773/b6b94083dee172ecb9a80eaf9d798541/720p"
+            },
+            {
+                "title": "Naruto the Movie: Legend of the Stone of Gelel",
+                "image": "images/naruto-movie-2.jpg",
+                "kodikUrl": "https://kodik.info/video/47776/2e00ccfbf15313c87bb2c261db46c621/720p"
+            },
+            {
+                "title": "Naruto the Movie: Guardians of the Crescent Moon Kingdom",
+                "image": "images/naruto-movie-3.jpg",
+                "kodikUrl": "https://kodik.info/video/47759/e952c4d2ac0189696079700fd60dff6f/720p"
+            },
+            {
+                "title": "Naruto Shippuden the Movie",
+                "image": "images/naruto-movie-4.jpg",
+                "kodikUrl": "https://kodik.info/video/47826/ff8121d27912ac689a97c067217553c6/720p"
+            }
+        ]
+    },
+    {
+        "title": "Jujutsu Kaisen",
+        "icon": "images/jujutsu-icon.jpg",
+        "image": "images/jujutsu-image.jpg",
+        "description": "Yuji Itadori, a boy with extraordinary physical strength, joins the Tokyo Metropolitan Magic Technical College to fight curses.",
+        "videoDescription": "Jujutsu Kaisen follows the story of Yuji Itadori who swallows a cursed object and gets caught up in a world of sorcery and dangerous enemies.",
+        "backgroundImage": "images/jujutsu-background.jpg",
+        "seasons": [
+            {
+                "title": "Магическая битва",
+                "image": "images/season-1-naruto.jpg",
+                "kodikUrl": "https://kodik.info/serial/29442/cc66eee3d513f88a640f96f6a9e814de/1080p"
+            },
+            {
+                "title": "Магическая битва 2 сезон",
+                "image": "images/season-1-naruto.jpg",
+                "kodikUrl": "https://kodik.info/serial/30001/4374e2c1e3d1a59d9c67f9c6a85cb445/720p"
+            }
+        ],
+        
+        "films": [
+            {
+                "title": "Jujutsu Kaisen 0: The Movie",
+                "image": "images/jujutsu-film-1.jpg",
+                "kodikUrl": "https://kodik.info/video/47773/b6b94083dee172ecb9a80eaf9d798541/720p"
+            }
+        ]
+    },
+    {
+        "title": "One Piece",
+        "icon": "images/one-piece-icon.jpg",
+        "image": "images/one-piece-image.jpg",
+        "description": "Follow Monkey D. Luffy and his pirate crew as they search for the greatest treasure ever left by the legendary Pirate, Gold Roger.",
+        "videoDescription": "One Piece is a tale of pirates, treasure, and an unyielding pursuit of freedom. Luffy and his crew explore the Grand Line and face off against fierce enemies.",
+        "backgroundImage": "images/one-piece-background.jpg",
+        "films": [
+            {
+                "title": "Film 1: Strong World",
+                "image": "images/one-piece-film-1.jpg",
+                "kodikUrl": "https://kodik.info/video/30340/c902f09761ccacf9ace9392556b1c870/720p"
+            },
+            {
+                "title": "Film 2: Z",
+                "image": "images/one-piece-film-2.jpg",
+                "kodikUrl": "https://kodik.info/video/31814/1e84a6058c72965391fca69261458b65/720p"
+            }
+        ]
+    }
+]

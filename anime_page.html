@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Episode</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Все ваши стили остаются без изменений */
+        body {
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            margin: 0;
+            padding-top: 70px;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(90deg, #ff6a00, #ee0979);
+            color: white;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-container h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .header-container h1 a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-bar input {
+            padding: 8px;
+            border-radius: 25px;
+            border: 1px solid #ccc;
+            outline: none;
+            width: 220px;
+            transition: all 0.3s;
+        }
+
+        .search-bar input:focus {
+            width: 250px;
+            border-color: #ff6a00;
+        }
+
+        .search-bar button {
+            background-color: #ff6a00;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #ee0979;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .video-section {
+            flex: 3;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        iframe {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .anime-description {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: white;
+            text-align: center;
+        }
+
+        .season-list {
+            flex: 1;
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            max-height: 600px;
+            overflow-y: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .season-list h3 {
+            color: #ff6a00;
+            margin-bottom: 20px;
+        }
+
+        .season-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .season-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            padding: 15px;
+        }
+
+        .season-list a {
+            text-decoration: none;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            border-radius: 25px;
+            position: relative;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .season-list a:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .season-list img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            margin-right: 15px;
+            border-radius: 10px;
+        }
+
+        /* Комментарии */
+        .comments-section {
+            background-color: #2a2a2a;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+
+        .comment {
+            background-color: #333;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .comment-text {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .comment-replies {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .reply-text {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #444;
+            color: white;
+        }
+
+        .comment-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .comment-actions button {
+            background-color: #ff6a00;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .comment-actions button:hover {
+            background-color: #ee0979;
+        }
+
+        .comment-meta {
+            color: #aaa;
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+
+        .comment-actions .like-btn, .comment-actions .dislike-btn {
+            cursor: pointer;
+            padding: 5px 10px;
+            font-size: 14px;
+            background-color: #4caf50;
+            color: white;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .comment-actions .dislike-btn {
+            background-color: #f44336;
+        }
+
+        .comment-actions .like-btn:hover, .comment-actions .dislike-btn:hover {
+            background-color: #ff6a00;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .video-section {
+                flex: none;
+                width: 100%;
+            }
+
+            .season-list {
+                flex: none;
+                width: 100%;
+            }
+
+            .search-bar input {
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1><a href="index.html">Anime Watch</a></h1>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search anime...">
+                <button onclick="performSearch()">Search</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="search-results" id="search-results" style="display: none;"></div>
+
+    <div class="container">
+        <!-- Video Section -->
+        <div class="video-section">
+            <h1 id="anime-title"></h1>
+            <h2 id="season-title"></h2>
+            <iframe id="anime-video" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
+
+            <!-- Description under the video -->
+            <div class="anime-description" id="anime-description"></div>
+        </div>
+
+        <!-- Season List Section -->
+        <div class="season-list">
+            <h3>Seasons</h3>
+            <ul id="season-list"></ul>
+
+            <!-- Films Section (only if films exist in the JSON) -->
+            <div id="films-section" style="display: none;">
+                <h3>Films</h3>
+                <ul id="films-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="comments-section" id="comments-section">
+        <h3>Comments</h3>
+        <div id="comments-list"></div>
+        <textarea id="new-comment" class="reply-text" placeholder="Add a comment..."></textarea>
+        <button onclick="submitComment()">Submit Comment</button>
+    </div>
+
+    <script>
+        // Функция поиска (без изменений)
+        function performSearch() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const searchResults = document.getElementById('search-results');
+
+            fetch('anime_data.json')
+                .then(response => response.json())
+                .then(data => {
+                    const results = data.filter(anime => anime.title.toLowerCase().includes(query));
+
+                    if (results.length > 0) {
+                        searchResults.style.display = 'block';
+                        searchResults.innerHTML = '<ul>' + results.map(anime => `
+                            <li>
+                                <img src="${anime.icon}" alt="${anime.title}">
+                                <a href="anime_page.html?title=${encodeURIComponent(anime.title)}&season=0&episode=0">${anime.title}</a>
+                            </li>
+                        `).join('') + '</ul>';
+                    } else {
+                        searchResults.style.display = 'block';
+                        searchResults.innerHTML = '<p>No results found</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching anime data:', error);
+                });
+        }
+
+        // Заполнение плеера и сезонов
+        fetch('anime_data.json')
+            .then(response => response.json())
+            .then(data => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const animeTitle = urlParams.get('title');
+                const seasonIndex = parseInt(urlParams.get('season')) || 0;
+
+                const anime = data.find(a => a.title === animeTitle);
+
+                if (anime) {
+                    const season = anime.seasons[seasonIndex];
+
+                    // Set the anime and season info
+                    document.getElementById('anime-title').textContent = anime.title;
+                    document.getElementById('season-title').textContent = season.title;
+                    document.getElementById('anime-video').src = season.kodikUrl;
+
+                    // Display the anime description under the video
+                    document.getElementById('anime-description').textContent = anime.videoDescription;
+
+                    // Update background image of the page
+                    document.body.style.backgroundImage = `url(${anime.backgroundImage})`;
+
+                    // Update the season list
+                    const seasonList = document.getElementById('season-list');
+                    seasonList.innerHTML = '';
+                    anime.seasons.forEach((s, index) => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `
+                            <a href="anime_page.html?title=${encodeURIComponent(animeTitle)}&season=${index}">
+                                <img src="${s.image}" alt="${s.title}">
+                                <span>${s.title}</span>
+                            </a>
+                        `;
+                        seasonList.appendChild(li);
+                    });
+
+                    // Check if films exist and display them
+                    if (anime.films && anime.films.length > 0) {
+                        const filmsSection = document.getElementById('films-section');
+                        const filmsList = document.getElementById('films-list');
+                        filmsList.innerHTML = ''; // Clear previous films
+                        filmsSection.style.display = 'block'; // Show films section
+
+                        // Create list items for films
+                        anime.films.forEach(film => {
+                            const filmItem = document.createElement('li');
+                            filmItem.innerHTML = `
+                                <a href="#" onclick="loadFilm('${film.kodikUrl}', '${film.title}')">
+                                    <img src="${film.image}" alt="${film.title}">
+                                    <span>${film.title}</span>
+                                </a>
+                            `;
+                            filmsList.appendChild(filmItem);
+                        });
+                    } else {
+                        document.getElementById('films-section').style.display = 'none';
+                    }
+                } else {
+                    document.body.innerHTML = '<h1>Anime not found</h1>';
+                }
+            })
+            .catch(error => {
+                console.error('Error loading anime data:', error);
+            });
+
+        // Функция для загрузки фильма в плеер
+        function loadFilm(kodikUrl, title) {
+            const videoPlayer = document.getElementById('anime-video');
+            const seasonTitle = document.getElementById('season-title');
+            
+            videoPlayer.src = kodikUrl;  // Change the video URL to the selected film's URL
+            seasonTitle.textContent = title;  // Set the film title in the season title section
+        }
+
+        // Firebase: Добавление и получение комментариев
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",           
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Инициализация Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Отправка комментария
+        function submitComment() {
+            const commentText = document.getElementById('new-comment').value.trim();
+            if (commentText) {
+                db.collection("comments").add({
+                    text: commentText,
+                    likes: 0,
+                    dislikes: 0,
+                    replies: [],
+                    liked: false,
+                    disliked: false
+                });
+                document.getElementById('new-comment').value = '';
+            }
+        }
+
+        // Загрузка комментариев из базы данных
+        function loadComments(snapshot) {
+            const commentsList = document.getElementById('comments-list');
+            commentsList.innerHTML = '';
+            snapshot.forEach(doc => {
+                const comment = doc.data();
+                const commentElement = document.createElement('div');
+                commentElement.classList.add('comment');
+                commentElement.innerHTML = `
+                    <p class="comment-text">${comment.text}</p>
+                    <div class="comment-actions">
+                        <button class="like-btn" onclick="likeComment('${doc.id}')">👍 ${comment.likes}</button>
+                        <button class="dislike-btn" onclick="dislikeComment('${doc.id}')">👎 ${comment.dislikes}</button>
+                    </div>
+                    <div class="comment-replies">
+                        ${comment.replies.map(reply => `
+                            <div class="comment">
+                                <p class="comment-text">${reply}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <textarea class="reply-text" placeholder="Reply to this comment..." id="reply-text-${doc.id}"></textarea>
+                    <button onclick="submitReply('${doc.id}')">Submit Reply</button>
+                `;
+                commentsList.appendChild(commentElement);
+            });
+        }
+
+        // Лайк комментария
+        function likeComment(commentId) {
+            const commentRef = db.collection("comments").doc(commentId);
+            commentRef.update({
+                likes: firebase.firestore.FieldValue.increment(1),
+                liked: true
+            });
+        }
+
+        // Дизлайк комментария
+        function dislikeComment(commentId) {
+            const commentRef = db.collection("comments").doc(commentId);
+            commentRef.update({
+                dislikes: firebase.firestore.FieldValue.increment(1),
+                disliked: true
+            });
+        }
+
+        // Ответ на комментарий
+        function submitReply(commentId) {
+            const replyText = document.getElementById(`reply-text-${commentId}`).value.trim();
+            if (replyText) {
+                const commentRef = db.collection("comments").doc(commentId);
+                commentRef.update({
+                    replies: firebase.firestore.FieldValue.arrayUnion(replyText)
+                });
+                document.getElementById(`reply-text-${commentId}`).value = '';
+            }
+        }
+
+        // Слушаем изменения в коллекции комментариев
+        db.collection("comments").onSnapshot(snapshot => {
+            loadComments(snapshot);
+        });
+    </script>
+</body>
+</html>
