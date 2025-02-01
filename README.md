@@ -1,1 +1,0 @@
-# StandoPower.watch.anime
