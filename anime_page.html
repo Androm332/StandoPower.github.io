@@ -218,27 +218,6 @@
             border-radius: 10px;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-
-            .video-section {
-                flex: none;
-                width: 100%;
-            }
-
-            .season-list {
-                flex: none;
-                width: 100%;
-            }
-
-            .search-bar input {
-                width: 150px;
-            }
-        }
-
         /* Стили для блока комментариев */
         .comments-section {
             margin-top: 20px;
@@ -409,6 +388,7 @@
         // Инициализация виджета комментариев
         function initComments() {
             const animeTitle = new URLSearchParams(window.location.search).get('title');
+            // Теперь комментарии привязаны только к названию аниме, а не к сезону
             VK.Widgets.Comments("vk_comments", {
                 limit: 10,
                 attach: "*",
