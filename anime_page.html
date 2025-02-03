@@ -12,6 +12,7 @@
             margin: 0;
             padding-top: 70px;
             overflow-x: hidden;
+            background-color: #121212; /* Темный фон */
         }
 
         header {
@@ -160,13 +161,6 @@
             text-align: center;
         }
 
-        #vk_comments {
-    background-color: #2b2b2b; /* Темный фон */
-    border-radius: 10px; /* Закругленные углы */
-    padding: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
         .season-list {
             flex: 1;
             background-color: #1e1e1e;
@@ -239,60 +233,47 @@
             margin-bottom: 20px;
         }
 
-        /* Стили для кнопки авторизации */
-        .auth-button {
+        /* Улучшение внешнего вида комментариев */
+        #vk_comments .vk-comments {
+            background-color: #2b2b2b; /* Темный фон */
+            border-radius: 10px;
+            padding: 15px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #vk_comments .vk-comments div {
+            color: #ffffff;
+        }
+
+        #vk_comments .vk-comments input {
+            background-color: #3e3e3e;
+            color: #ffffff;
+            border-radius: 10px;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            margin-bottom: 10px;
+        }
+
+        #vk_comments .vk-comments input:focus {
+            outline: none;
+            border-color: #ff6a00;
+        }
+
+        #vk_comments .vk-comments button {
             background-color: #ff6a00;
             color: white;
+            border-radius: 10px;
             border: none;
             padding: 8px 20px;
-            border-radius: 25px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
 
-        .auth-button:hover {
+        #vk_comments .vk-comments button:hover {
             background-color: #ee0979;
         }
 
-        /* Стили для информации о пользователе */
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .user-info img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
-
-        .user-info span {
-            font-weight: bold;
-        }
-
-        .user-info button {
-            background-color: #ff6a00;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .user-info button:hover {
-            background-color: #ee0979;
-        }
-
-        /* Стили для виджета комментариев */
-        .vk-comments-widget {
-            width: 100%;
-            max-width: 100%;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
     </style>
     <!-- Подключение SDK ВКонтакте -->
     <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
@@ -308,15 +289,6 @@
             <div class="search-bar">
                 <input type="text" id="search-input" placeholder="Search anime...">
                 <button onclick="performSearch()">Search</button>
-            </div>
-            <!-- Кнопка авторизации или информация о пользователе -->
-            <div id="auth-section">
-                <div id="auth-button" class="auth-button" onclick="loginVK()">Вход</div>
-                <div id="user-info" class="user-info" style="display: none;">
-                    <img id="user-photo" src="" alt="User Photo">
-                    <span id="user-name"></span>
-                    <button onclick="logoutVK()">Выход</button>
-                </div>
             </div>
         </div>
     </header>
@@ -336,7 +308,7 @@
             <!-- Comments Section -->
             <div class="comments-section">
                 <h3>Comments</h3>
-                <div id="vk_comments" class="vk-comments-widget"></div>
+                <div id="vk_comments"></div>
                 <div id="login-message" style="display: none;">
                     <p>Чтобы оставлять комментарии, <a href="#" onclick="loginVK()">войдите через ВКонтакте</a>.</p>
                 </div>
@@ -404,11 +376,10 @@
         // Инициализация виджета комментариев
         function initComments() {
             const animeTitle = new URLSearchParams(window.location.search).get('title');
-            // Теперь комментарии привязаны только к названию аниме, а не к сезону
             VK.Widgets.Comments("vk_comments", {
                 limit: 10,
                 attach: "*",
-                pageUrl: window.location.origin + window.location.pathname + '?title=' + encodeURIComponent(animeTitle) // Используется только название аниме
+                pageUrl: window.location.origin + window.location.pathname + '?title=' + encodeURIComponent(animeTitle)
             });
         }
 
