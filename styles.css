@@ -1,0 +1,136 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background-color: #1e1e2f;
+    color: #fff;
+    padding: 1rem 0;
+    
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+.search-bar input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+}
+
+.search-bar button {
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    border: none;
+    background-color: #ff6b6b;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background-color: #ee5253;
+}
+
+.catalog .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.anime-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 1rem;
+}
+
+.anime-card img {
+    max-width: 100%;
+    border-bottom: 1px solid #ddd;
+}
+
+footer {
+    text-align: center;
+    background-color: #1e1e2f;
+    color: white;
+    padding: 1rem 0;
+}
+
+#video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-container {
+    position: relative;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.video-container video {
+    max-width: 100%;
+}
+
+.video-container button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff6b6b;
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.search-results img {
+    width: 50px;  /* Задаем размер иконки */
+    height: 50px;
+    border-radius: 5px;
+    object-fit: cover;  /* Сохраняет пропорции изображения */
+    margin-right: 10px; /* Отступ между изображением и текстом */
+}
+
+
+.video-wrapper {
+    position: relative;
+    width: 607px;
+    height: 360px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0); /* Прозрачный слой */
+    z-index: 10;
+}
