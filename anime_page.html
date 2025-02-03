@@ -6,247 +6,81 @@
     <title>Anime Episode</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            color: #ffffff;
-            margin: 0;
-            padding-top: 70px;
-            overflow-x: hidden;
-            background-color: #121212; /* Темный фон */
-        }
+        /* Ваши существующие стили */
 
-        header {
-            background: linear-gradient(90deg, #ff6a00, #ee0979);
-            color: white;
-            padding: 15px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .header-container h1 {
-            margin: 0;
-            font-size: 2rem;
-        }
-
-        .header-container h1 a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .search-bar {
-            display: flex;
-            gap: 10px;
-        }
-
-        .search-bar input {
-            padding: 8px;
-            border-radius: 25px;
-            border: 1px solid #ccc;
-            outline: none;
-            width: 220px;
-            transition: all 0.3s;
-        }
-
-        .search-bar input:focus {
-            width: 250px;
-            border-color: #ff6a00;
-        }
-
-        .search-bar button {
-            background-color: #ff6a00;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .search-bar button:hover {
-            background-color: #ee0979;
-        }
-
-        .search-results {
-            background-color: #1e1e1e;
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 10px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .search-results ul {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .search-results li {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        /* Стили для кастомных комментариев */
+        #custom-comments {
             background-color: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .custom-comment {
+            background-color: #3a3a3a;
             padding: 15px;
+            border-radius: 10px;
             margin-bottom: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .search-results li:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+        .comment-author {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
         }
 
-        .search-results img {
-            width: 70px;
-            height: 70px;
-            border-radius: 10px;
-            object-fit: cover;
+        .comment-author img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
         }
 
-        .search-results a {
-            text-decoration: none;
+        .comment-author span {
             color: #ff6a00;
             font-weight: bold;
-            font-size: 1.1rem;
         }
 
-        .search-results a:hover {
-            text-decoration: underline;
+        .comment-text {
+            color: #ffffff;
+            font-size: 1rem;
+            line-height: 1.5;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            display: flex;
-            gap: 20px;
+        .comment-date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 5px;
         }
 
-        .video-section {
-            flex: 3;
-            background: #1e1e1e;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        iframe {
-            display: block;
-            margin: 20px auto;
-            max-width: 100%;
-            border-radius: 10px;
-        }
-
-        .anime-description {
+        .comment-form {
             margin-top: 20px;
-            font-size: 1.1rem;
-            color: white;
-            text-align: center;
         }
 
-        .season-list {
-            flex: 1;
-            background-color: #1e1e1e;
-            padding: 20px;
-            border-radius: 10px;
-            max-height: 600px;
-            overflow-y: auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .season-list h3 {
-            color: #ff6a00;
-            margin-bottom: 20px;
-        }
-
-        .season-list ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .season-list li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            background-color: #2a2a2a;
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-            padding: 15px;
-        }
-
-        .season-list a {
-            text-decoration: none;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 12px 18px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            border-radius: 25px;
-            position: relative;
+        .comment-form textarea {
             width: 100%;
-            transition: background-color 0.3s;
-        }
-
-        .season-list a:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .season-list img {
-            width: 90px;
-            height: 90px;
-            object-fit: cover;
-            margin-right: 15px;
+            padding: 10px;
             border-radius: 10px;
+            border: 1px solid #444;
+            background-color: #3a3a3a;
+            color: #ffffff;
+            resize: none;
+            margin-bottom: 10px;
         }
 
-        /* Стили для блока комментариев */
-        .comments-section {
-            margin-top: 20px;
-            background-color: #1e1e1e;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .comments-section h3 {
-            color: #ff6a00;
-            margin-bottom: 20px;
-        }
-        #vk_comments iframe {
-    filter: invert(1) hue-rotate(180deg); /* Инвертировать цвета */
-}
-
-                #vk_comments .vk-comments button {
+        .comment-form button {
             background-color: #ff6a00;
             color: white;
-            border-radius: 10px;
             border: none;
             padding: 8px 20px;
+            border-radius: 25px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
 
-
+        .comment-form button:hover {
+            background-color: #ee0979;
+        }
     </style>
     <!-- Подключение SDK ВКонтакте -->
     <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
@@ -281,7 +115,13 @@
             <!-- Comments Section -->
             <div class="comments-section">
                 <h3>Comments</h3>
-                <div id="vk_comments"></div>
+                <div id="custom-comments">
+                    <!-- Кастомные комментарии будут здесь -->
+                </div>
+                <div class="comment-form">
+                    <textarea id="comment-input" placeholder="Напишите комментарий..."></textarea>
+                    <button onclick="addComment()">Отправить</button>
+                </div>
                 <div id="login-message" style="display: none;">
                     <p>Чтобы оставлять комментарии, <a href="#" onclick="loginVK()">войдите через ВКонтакте</a>.</p>
                 </div>
@@ -302,168 +142,86 @@
     </div>
 
     <script>
-        // Функция для авторизации через ВКонтакте
-        function loginVK() {
-            VK.Auth.login(function(response) {
-                if (response.session) {
-                    // Пользователь авторизован
-                    checkAuth();
-                }
-            }, VK.access.FRIENDS | VK.access.PHOTOS | VK.access.STATUS); // Запрошенные права
-        }
+        // Скрываем оригинальный виджет ВКонтакте
+        document.getElementById('vk_comments').style.display = 'none';
 
-        // Функция для выхода
-        function logoutVK() {
-            VK.Auth.logout(function() {
-                // Пользователь вышел
-                checkAuth();
+        // Функция для получения комментариев
+        function fetchComments() {
+            const ownerId = -GROUP_ID; // Замените на ID вашей группы или пользователя
+            const postId = POST_ID;    // Замените на ID поста
+
+            VK.Api.call('wall.getComments', {
+                owner_id: ownerId,
+                post_id: postId,
+                extended: 1,
+                v: '5.131'
+            }, function(response) {
+                if (response.response) {
+                    const comments = response.response.items;
+                    displayComments(comments);
+                }
             });
         }
 
-        // Проверка авторизации
+        // Функция для отображения комментариев
+        function displayComments(comments) {
+            const commentsContainer = document.getElementById('custom-comments');
+            commentsContainer.innerHTML = ''; // Очищаем контейнер
+
+            comments.forEach(comment => {
+                const commentElement = document.createElement('div');
+                commentElement.className = 'custom-comment';
+
+                commentElement.innerHTML = `
+                    <div class="comment-author">
+                        <img src="${comment.from_id.photo_50}" alt="${comment.from_id.first_name} ${comment.from_id.last_name}">
+                        <span>${comment.from_id.first_name} ${comment.from_id.last_name}</span>
+                    </div>
+                    <div class="comment-text">${comment.text}</div>
+                    <div class="comment-date">${new Date(comment.date * 1000).toLocaleString()}</div>
+                `;
+
+                commentsContainer.appendChild(commentElement);
+            });
+        }
+
+        // Функция для отправки комментариев
+        function addComment() {
+            const message = document.getElementById('comment-input').value;
+            const ownerId = -GROUP_ID; // Замените на ID вашей группы или пользователя
+            const postId = POST_ID;    // Замените на ID поста
+
+            VK.Api.call('wall.addComment', {
+                owner_id: ownerId,
+                post_id: postId,
+                message: message,
+                v: '5.131'
+            }, function(response) {
+                if (response.response) {
+                    console.log('Комментарий добавлен:', response.response);
+                    fetchComments(); // Обновляем список комментариев
+                }
+            });
+        }
+
+        // Проверка авторизации при загрузке страницы
         function checkAuth() {
             VK.Auth.getLoginStatus(function(response) {
                 if (response.session) {
                     // Пользователь авторизован
-                    document.getElementById('auth-button').style.display = 'none';
-                    document.getElementById('user-info').style.display = 'flex';
-                    document.getElementById('vk_comments').style.display = 'block';
                     document.getElementById('login-message').style.display = 'none';
-
-                    // Загрузка информации о пользователе
-                    VK.Api.call('users.get', { fields: 'photo_50' }, function(response) {
-                        const user = response.response[0];
-                        document.getElementById('user-photo').src = user.photo_50;
-                        document.getElementById('user-name').textContent = user.first_name + ' ' + user.last_name;
-                    });
+                    fetchComments(); // Загружаем комментарии
                 } else {
                     // Пользователь не авторизован
-                    document.getElementById('auth-button').style.display = 'block';
-                    document.getElementById('user-info').style.display = 'none';
-                    document.getElementById('vk_comments').style.display = 'none';
                     document.getElementById('login-message').style.display = 'block';
                 }
             });
         }
 
-        // Инициализация виджета комментариев
-        function initComments() {
-            const animeTitle = new URLSearchParams(window.location.search).get('title');
-            VK.Widgets.Comments("vk_comments", {
-                limit: 10,
-                attach: "*",
-                pageUrl: window.location.origin + window.location.pathname + '?title=' + encodeURIComponent(animeTitle)
-            });
-        }
-
-        // Проверка авторизации при загрузке страницы
+        // Инициализация при загрузке страницы
         window.onload = function() {
             checkAuth();
-            initComments();
         };
-
-        // Остальной код (performSearch, fetch и т.д.)
-        function performSearch() {
-            const query = document.getElementById('search-input').value.toLowerCase();
-            const searchResults = document.getElementById('search-results');
-
-            fetch('anime_data.json')
-                .then(response => response.json())
-                .then(data => {
-                    const results = data.filter(anime => anime.title.toLowerCase().includes(query));
-
-                    if (results.length > 0) {
-                        searchResults.style.display = 'block';
-                        searchResults.innerHTML = '<ul>' + results.map(anime => `
-                            <li>
-                                <img src="${anime.icon}" alt="${anime.title}">
-                                <a href="anime_page.html?title=${encodeURIComponent(anime.title)}&season=0&episode=0">${anime.title}</a>
-                            </li>
-                        `).join('') + '</ul>';
-                    } else {
-                        searchResults.style.display = 'block';
-                        searchResults.innerHTML = '<p>No results found</p>';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching anime data:', error);
-                });
-        }
-
-        fetch('anime_data.json')
-            .then(response => response.json())
-            .then(data => {
-                const urlParams = new URLSearchParams(window.location.search);
-                const animeTitle = urlParams.get('title');
-                const seasonIndex = parseInt(urlParams.get('season')) || 0;
-
-                const anime = data.find(a => a.title === animeTitle);
-
-                if (anime) {
-                    const season = anime.seasons[seasonIndex];
-
-                    // Установка информации об аниме и сезоне
-                    document.getElementById('anime-title').textContent = anime.title;
-                    document.getElementById('season-title').textContent = season.title;
-                    document.getElementById('anime-video').src = season.kodikUrl;
-
-                    // Отображение описания аниме под видео
-                    document.getElementById('anime-description').textContent = anime.videoDescription;
-
-                    // Обновление фонового изображения страницы
-                    document.body.style.backgroundImage = `url(${anime.backgroundImage})`;
-
-                    // Обновление списка сезонов
-                    const seasonList = document.getElementById('season-list');
-                    seasonList.innerHTML = '';
-                    anime.seasons.forEach((s, index) => {
-                        const li = document.createElement('li');
-                        li.innerHTML = `
-                            <a href="anime_page.html?title=${encodeURIComponent(animeTitle)}&season=${index}">
-                                <img src="${s.image}" alt="${s.title}">
-                                <span>${s.title}</span>
-                            </a>
-                        `;
-                        seasonList.appendChild(li);
-                    });
-
-                    // Проверка наличия фильмов и их отображение
-                    if (anime.films && anime.films.length > 0) {
-                        const filmsSection = document.getElementById('films-section');
-                        const filmsList = document.getElementById('films-list');
-                        filmsList.innerHTML = ''; // Очистка предыдущих фильмов
-                        filmsSection.style.display = 'block'; // Показ раздела с фильмами
-
-                        // Создание элементов списка для фильмов
-                        anime.films.forEach(film => {
-                            const filmItem = document.createElement('li');
-                            filmItem.innerHTML = `
-                                <a href="#" onclick="loadFilm('${film.kodikUrl}', '${film.title}')">
-                                    <img src="${film.image}" alt="${film.title}">
-                                    <span>${film.title}</span>
-                                </a>
-                            `;
-                            filmsList.appendChild(filmItem);
-                        });
-                    } else {
-                        document.getElementById('films-section').style.display = 'none';
-                    }
-                } else {
-                    document.body.innerHTML = '<h1>Anime not found</h1>';
-                }
-            })
-            .catch(error => {
-                console.error('Error loading anime data:', error);
-            });
-
-        // Function to load a film in the video player
-        function loadFilm(kodikUrl, title) {
-            const videoPlayer = document.getElementById('anime-video');
-            const seasonTitle = document.getElementById('season-title');
-            
-            videoPlayer.src = kodikUrl;  // Change the video URL to the selected film's URL
-            seasonTitle.textContent = title;  // Set the film title in the season title section
-        }
     </script>
 </body>
 </html>
