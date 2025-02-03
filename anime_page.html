@@ -232,6 +232,9 @@
             color: #ff6a00;
             margin-bottom: 20px;
         }
+        #vk_comments iframe {
+    filter: invert(1) hue-rotate(180deg); /* Инвертировать цвета */
+}
 
     </style>
     <!-- Подключение SDK ВКонтакте -->
@@ -339,7 +342,6 @@
                 limit: 10,
                 attach: "*",
                 pageUrl: window.location.origin + window.location.pathname + '?title=' + encodeURIComponent(animeTitle)
-                colorScheme: "dark" 
             });
         }
 
