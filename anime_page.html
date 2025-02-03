@@ -408,12 +408,12 @@
 
         // Инициализация виджета комментариев
         function initComments() {
-VK.Widgets.Comments("vk_comments", {
-    limit: 10,
-    attach: "*",
-    pageUrl: "https://Androm332.github.io/StandoPower.github.io"
-});
-
+            const animeTitle = new URLSearchParams(window.location.search).get('title');
+            VK.Widgets.Comments("vk_comments", {
+                limit: 10,
+                attach: "*",
+                pageUrl: window.location.href // Уникальный URL для каждого аниме
+            });
         }
 
         // Проверка авторизации при загрузке страницы
