@@ -277,6 +277,15 @@
         .user-info button:hover {
             background-color: #ee0979;
         }
+
+        /* Стили для виджета комментариев */
+        .vk-comments-widget {
+            width: 100%;
+            max-width: 100%;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
     </style>
     <!-- Подключение SDK ВКонтакте -->
     <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
@@ -320,7 +329,7 @@
             <!-- Comments Section -->
             <div class="comments-section">
                 <h3>Comments</h3>
-                <div id="vk_comments"></div>
+                <div id="vk_comments" class="vk-comments-widget"></div>
                 <div id="login-message" style="display: none;">
                     <p>Чтобы оставлять комментарии, <a href="#" onclick="loginVK()">войдите через ВКонтакте</a>.</p>
                 </div>
