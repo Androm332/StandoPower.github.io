@@ -392,7 +392,7 @@
             VK.Widgets.Comments("vk_comments", {
                 limit: 10,
                 attach: "*",
-                pageUrl: window.location.href // Уникальный URL для каждого аниме
+                pageUrl: window.location.origin + window.location.pathname + '?title=' + encodeURIComponent(animeTitle) // Используется только название аниме
             });
         }
 
