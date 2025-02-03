@@ -219,14 +219,25 @@
             border-radius: 10px;
         }
 
-        /* Стили для блока комментариев */
-        .comments-section {
-            margin-top: 20px;
-            background-color: #1e1e1e;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+/* Обертка для комментариев */
+.comments-wrapper {
+    width: 100vw; /* Ширина на весь экран */
+    margin-left: -50vw; /* Смещение влево на половину ширины экрана */
+    left: 50%; /* Центрирование */
+    position: relative;
+    background-color: #1e1e1e; /* Темный фон */
+    padding: 20px 0; /* Отступы сверху и снизу */
+}
+
+/* Секция комментариев */
+.comments-section {
+    max-width: 1200px; /* Ограничение ширины контента */
+    margin: 0 auto; /* Центрирование */
+    padding: 20px;
+    background-color: #1e1e1e; /* Темный фон */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
         .comments-section h3 {
             color: #ff6a00;
