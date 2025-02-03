@@ -6,6 +6,7 @@
     <title>Anime Episode</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* Ваши стили */
         body {
             font-family: Arial, sans-serif;
             color: #ffffff;
@@ -375,6 +376,9 @@
                         document.getElementById('user-photo').src = user.photo_50;
                         document.getElementById('user-name').textContent = user.first_name + ' ' + user.last_name;
                     });
+
+                    // Инициализация виджета комментариев
+                    initComments();
                 } else {
                     // Пользователь не авторизован
                     document.getElementById('auth-button').style.display = 'block';
@@ -399,7 +403,6 @@
         // Проверка авторизации при загрузке страницы
         window.onload = function() {
             checkAuth();
-            initComments();
         };
 
         // Остальной код (performSearch, fetch и т.д.)
