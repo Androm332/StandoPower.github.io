@@ -233,9 +233,16 @@
             margin-bottom: 20px;
         }
 
+/* Применяем инвертирование цвета и hue-rotate только к основному контенту в iframe */
 #vk_comments iframe {
-    filter: invert(1) hue-rotate(100deg); /* Инвертировать цвета */
+    filter: invert(1) hue-rotate(180deg); /* Инвертировать цвета */
 }
+
+/* Исключаем изменение цвета аватарок */
+#vk_comments iframe img {
+    filter: none; /* Отменить фильтры для изображений аватарок */
+}
+
 
     </style>
     <!-- Подключение SDK ВКонтакте -->
