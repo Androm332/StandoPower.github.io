@@ -6,7 +6,6 @@
     <title>Anime Episode</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Ваши стили */
         body {
             font-family: Arial, sans-serif;
             color: #ffffff;
@@ -321,8 +320,8 @@
             <!-- Comments Section -->
             <div class="comments-section">
                 <h3>Comments</h3>
-                <div id="vk_comments" style="display: none;"></div>
-                <div id="login-message">
+                <div id="vk_comments"></div>
+                <div id="login-message" style="display: none;">
                     <p>Чтобы оставлять комментарии, <a href="#" onclick="loginVK()">войдите через ВКонтакте</a>.</p>
                 </div>
             </div>
@@ -376,9 +375,6 @@
                         document.getElementById('user-photo').src = user.photo_50;
                         document.getElementById('user-name').textContent = user.first_name + ' ' + user.last_name;
                     });
-
-                    // Инициализация виджета комментариев
-                    initComments();
                 } else {
                     // Пользователь не авторизован
                     document.getElementById('auth-button').style.display = 'block';
@@ -403,6 +399,7 @@
         // Проверка авторизации при загрузке страницы
         window.onload = function() {
             checkAuth();
+            initComments();
         };
 
         // Остальной код (performSearch, fetch и т.д.)
