@@ -219,13 +219,21 @@
             border-radius: 10px;
         }
 
-        /* Стили для блока комментариев */
+        /* Новые стили для комментариев */
+        .comments-wrapper {
+            width: 100vw; /* Ширина на весь экран */
+            margin-left: -50vw; /* Смещение влево на половину ширины экрана */
+            left: 50%; /* Центрирование */
+            position: relative;
+            background-color: #1e1e1e; /* Темный фон */
+            padding: 20px 0; /* Отступы сверху и снизу */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень */
+        }
+
         .comments-section {
-            margin-top: 20px;
-            background-color: #1e1e1e;
+            max-width: 1200px; /* Ограничение ширины контента */
+            margin: 0 auto; /* Центрирование */
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .comments-section h3 {
@@ -233,6 +241,9 @@
             margin-bottom: 20px;
         }
 
+        #vk_comments {
+            width: 100%; /* Ширина на всю доступную ширину */
+        }
     </style>
     <!-- Подключение SDK ВКонтакте -->
     <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
@@ -263,15 +274,6 @@
 
             <!-- Description under the video -->
             <div class="anime-description" id="anime-description"></div>
-
-            <!-- Comments Section -->
-            <div class="comments-section">
-                <h3>Comments</h3>
-                <div id="vk_comments"></div>
-                <div id="login-message" style="display: none;">
-                    <p>Чтобы оставлять комментарии, <a href="#" onclick="loginVK()">войдите через ВКонтакте</a>.</p>
-                </div>
-            </div>
         </div>
 
         <!-- Season List Section -->
@@ -283,6 +285,17 @@
             <div id="films-section" style="display: none;">
                 <h3>Films</h3>
                 <ul id="films-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Новый контейнер для комментариев -->
+    <div class="comments-wrapper">
+        <div class="comments-section">
+            <h3>Comments</h3>
+            <div id="vk_comments"></div>
+            <div id="login-message" style="display: none;">
+                <p>Чтобы оставлять комментарии, <a href="#" onclick="loginVK()">войдите через ВКонтакте</a>.</p>
             </div>
         </div>
     </div>
