@@ -225,20 +225,34 @@
     margin-left: -50vw; /* Смещение влево на половину ширины экрана */
     left: 50%; /* Центрирование */
     position: relative;
-    padding: 40px 0; /* Увеличиваем отступы сверху и снизу */
+    padding: 40px 0 60px; /* Увеличиваем отступы сверху и снизу (особенно снизу) */
     background: linear-gradient(145deg, #1e1e1e, #2a2a2a); /* Градиентный фон */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Тень для объема */
     border-top: 1px solid rgba(255, 255, 255, 0.1); /* Легкая граница сверху */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Легкая граница снизу */
+    z-index: 1; /* Убедимся, что комментарии выше других элементов */
 }
 
 .comments-section {
-    max-width: 1500px; /* Ограничение ширины контента */
-    margin: 5 auto; /* Центрирование */
-    padding: 150px;
+    max-width: 1200px; /* Ограничение ширины контента */
+    margin: 0 auto; /* Центрирование */
+    padding: 20px;
     background-color: rgba(30, 30, 30, 0.9); /* Полупрозрачный темный фон */
     border-radius: 15px; /* Скругленные углы */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Тень для объема */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.comments-section:hover {
+    background-color: rgba(40, 40, 40, 0.9); /* Изменение фона при наведении */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Увеличение тени */
+}
+
+.comments-section h3 {
+    color: #ff6a00;
+    margin-bottom: 20px;
+    font-size: 1.5rem; /* Увеличиваем размер заголовка */
+    text-align: center; /* Центрируем заголовок */
 }
 
 #vk_comments {
@@ -247,9 +261,6 @@
     overflow: hidden; /* Скрываем лишнее */
     margin-bottom: 20px; /* Отступ снизу для комментариев */
 }
-
-
-
     </style>
     <!-- Подключение SDK ВКонтакте -->
     <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
