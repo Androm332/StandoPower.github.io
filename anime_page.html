@@ -219,31 +219,40 @@
             border-radius: 10px;
         }
 
-        /* Новые стили для комментариев */
-        .comments-wrapper {
-            width: 100vw; /* Ширина на весь экран */
-            margin-left: -50vw; /* Смещение влево на половину ширины экрана */
-            left: 50%; /* Центрирование */
-            position: relative;
-            background-color: #1e1e1e; /* Темный фон */
-            padding: 20px 0; /* Отступы сверху и снизу */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень */
-        }
+/* Новые стили для комментариев */
+.comments-wrapper {
+    width: 100vw; /* Ширина на весь экран */
+    margin-left: -50vw; /* Смещение влево на половину ширины экрана */
+    left: 50%; /* Центрирование */
+    position: relative;
+    padding: 40px 0; /* Увеличиваем отступы сверху и снизу */
+    background: linear-gradient(145deg, #1e1e1e, #2a2a2a); /* Градиентный фон */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Тень для объема */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Легкая граница сверху */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Легкая граница снизу */
+}
 
-        .comments-section {
-            max-width: 1200px; /* Ограничение ширины контента */
-            margin: 0 auto; /* Центрирование */
-            padding: 20px;
-        }
+.comments-section {
+    max-width: 1200px; /* Ограничение ширины контента */
+    margin: 0 auto; /* Центрирование */
+    padding: 20px;
+    background-color: rgba(30, 30, 30, 0.9); /* Полупрозрачный темный фон */
+    border-radius: 15px; /* Скругленные углы */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Тень для объема */
+}
 
-        .comments-section h3 {
-            color: #ff6a00;
-            margin-bottom: 20px;
-        }
+.comments-section h3 {
+    color: #ff6a00;
+    margin-bottom: 20px;
+    font-size: 1.5rem; /* Увеличиваем размер заголовка */
+    text-align: center; /* Центрируем заголовок */
+}
 
-        #vk_comments {
-            width: 100%; /* Ширина на всю доступную ширину */
-        }
+#vk_comments {
+    width: 100%; /* Ширина на всю доступную ширину */
+    border-radius: 10px; /* Скругленные углы для виджета */
+    overflow: hidden; /* Скрываем лишнее */
+}
     </style>
     <!-- Подключение SDK ВКонтакте -->
     <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
