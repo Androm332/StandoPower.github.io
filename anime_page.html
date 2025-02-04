@@ -225,12 +225,11 @@
     margin-left: -50vw; /* Смещение влево на половину ширины экрана */
     left: 50%; /* Центрирование */
     position: relative;
-    padding: 40px 0 60px; /* Увеличиваем отступы сверху и снизу (особенно снизу) */
+    padding: 40px 0; /* Увеличиваем отступы сверху и снизу */
     background: linear-gradient(145deg, #1e1e1e, #2a2a2a); /* Градиентный фон */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Тень для объема */
     border-top: 1px solid rgba(255, 255, 255, 0.1); /* Легкая граница сверху */
-    border-bottom: 4px solid rgba(255, 255, 255, 0.1); /* Легкая граница снизу */
-    z-index: 1; /* Убедимся, что комментарии выше других элементов */
+    border-bottom: 10px solid rgba(255, 255, 255, 0.1); /* Легкая граница снизу */
 }
 
 .comments-section {
@@ -240,12 +239,6 @@
     background-color: rgba(30, 30, 30, 0.9); /* Полупрозрачный темный фон */
     border-radius: 15px; /* Скругленные углы */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Тень для объема */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.comments-section:hover {
-    background-color: rgba(40, 40, 40, 0.9); /* Изменение фона при наведении */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Увеличение тени */
 }
 
 .comments-section h3 {
@@ -259,7 +252,6 @@
     width: 100%; /* Ширина на всю доступную ширину */
     border-radius: 10px; /* Скругленные углы для виджета */
     overflow: hidden; /* Скрываем лишнее */
-    margin-bottom: 20px; /* Отступ снизу для комментариев */
 }
 
     </style>
