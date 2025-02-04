@@ -261,6 +261,14 @@
     overflow: hidden; /* Скрываем лишнее */
     margin-bottom: 20px; /* Отступ снизу для комментариев */
 }
+        footer {
+    position: relative; /* Убедимся, что footer не перекрывает комментарии */
+    z-index: 0; /* footer должен быть ниже комментариев */
+    margin-top: 20px; /* Отступ сверху */
+    padding: 20px;
+    background-color: #1e1e1e;
+    text-align: center;
+}
     </style>
     <!-- Подключение SDK ВКонтакте -->
     <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
