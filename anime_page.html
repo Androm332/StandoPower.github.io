@@ -225,27 +225,20 @@
     margin-left: -50vw; /* Смещение влево на половину ширины экрана */
     left: 50%; /* Центрирование */
     position: relative;
-    padding: 250px 0 250px; /* Увеличиваем отступы сверху и снизу (особенно снизу) */
+    padding: 40px 0; /* Увеличиваем отступы сверху и снизу */
     background: linear-gradient(145deg, #1e1e1e, #2a2a2a); /* Градиентный фон */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Тень для объема */
     border-top: 1px solid rgba(255, 255, 255, 0.1); /* Легкая граница сверху */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Легкая граница снизу */
-    z-index: 1; /* Убедимся, что комментарии выше других элементов */
 }
 
 .comments-section {
     max-width: 1200px; /* Ограничение ширины контента */
     margin: 0 auto; /* Центрирование */
-    padding: 20px;
+    padding: 40px;
     background-color: rgba(30, 30, 30, 0.9); /* Полупрозрачный темный фон */
     border-radius: 15px; /* Скругленные углы */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Тень для объема */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.comments-section:hover {
-    background-color: rgba(40, 40, 40, 0.9); /* Изменение фона при наведении */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Увеличение тени */
 }
 
 .comments-section h3 {
@@ -259,15 +252,6 @@
     width: 100%; /* Ширина на всю доступную ширину */
     border-radius: 10px; /* Скругленные углы для виджета */
     overflow: hidden; /* Скрываем лишнее */
-    margin-bottom: 20px; /* Отступ снизу для комментариев */
-}
-        footer {
-    position: relative; /* Убедимся, что footer не перекрывает комментарии */
-    z-index: 0; /* footer должен быть ниже комментариев */
-    margin-top: 20px; /* Отступ сверху */
-    padding: 20px;
-    background-color: #1e1e1e;
-    text-align: center;
 }
     </style>
     <!-- Подключение SDK ВКонтакте -->
