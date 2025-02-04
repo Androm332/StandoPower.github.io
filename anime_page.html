@@ -254,6 +254,23 @@
     font-size: 1.5rem; /* Увеличиваем размер заголовка */
     text-align: center; /* Центрируем заголовок */
 }
+
+        #vk_comments iframe {
+    height: 100% !important; /* Убедитесь, что iframe занимает всю доступную высоту */
+    min-height: 400px; /* Устанавливаем минимальную высоту для iframe */
+}
+
+/* Увеличиваем отступы и пространство для комментариев */
+#vk_comments {
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* Стили для отображения блоков с комментариями */
+#vk_comments .vk_comments_list {
+    padding-bottom: 15px; /* Увеличиваем отступ снизу, чтобы не было обрезки */
+}
+
     </style>
     <!-- Подключение SDK ВКонтакте -->
     <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
