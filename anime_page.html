@@ -12,6 +12,7 @@
             margin: 0;
             padding-top: 70px;
             overflow-x: hidden;
+            background-color: #121212; /* Темный фон */
         }
 
         header {
@@ -218,86 +219,41 @@
             border-radius: 10px;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
+/* Новые стили для комментариев */
+.comments-wrapper {
+    width: 100vw; /* Ширина на весь экран */
+    margin-left: -50vw; /* Смещение влево на половину ширины экрана */
+    left: 50%; /* Центрирование */
+    position: relative;
+    padding: 40px 0 60px; /* Увеличиваем отступы сверху и снизу (особенно снизу) */
+    background: linear-gradient(145deg, #1e1e1e, #2a2a2a); /* Градиентный фон */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Тень для объема */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Легкая граница сверху */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Легкая граница снизу */
+    z-index: 1; /* Убедимся, что комментарии выше других элементов */
+}
 
-            .video-section {
-                flex: none;
-                width: 100%;
-            }
+.comments-section {
+    max-width: 1200px; /* Ограничение ширины контента */
+    margin: 0 auto; /* Центрирование */
+    padding: 20px;
+    background-color: rgba(30, 30, 30, 0.9); /* Полупрозрачный темный фон */
+    border-radius: 15px; /* Скругленные углы */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Тень для объема */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
 
-            .season-list {
-                flex: none;
-                width: 100%;
-            }
+.comments-section:hover {
+    background-color: rgba(40, 40, 40, 0.9); /* Изменение фона при наведении */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Увеличение тени */
+}
 
-            .search-bar input {
-                width: 150px;
-            }
-        }
-
-        /* Стили для блока комментариев */
-        .comments-section {
-            margin-top: 20px;
-            background-color: #1e1e1e;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .comments-section h3 {
-            color: #ff6a00;
-            margin-bottom: 20px;
-        }
-
-        /* Стили для кнопки авторизации */
-        .auth-button {
-            background-color: #ff6a00;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .auth-button:hover {
-            background-color: #ee0979;
-        }
-
-        /* Стили для информации о пользователе */
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .user-info img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
-
-        .user-info span {
-            font-weight: bold;
-        }
-
-        .user-info button {
-            background-color: #ff6a00;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .user-info button:hover {
-            background-color: #ee0979;
-        }
+.comments-section h3 {
+    color: #ff6a00;
+    margin-bottom: 20px;
+    font-size: 1.5rem; /* Увеличиваем размер заголовка */
+    text-align: center; /* Центрируем заголовок */
+}
     </style>
     <!-- Подключение SDK ВКонтакте -->
     <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
@@ -314,15 +270,6 @@
                 <input type="text" id="search-input" placeholder="Search anime...">
                 <button onclick="performSearch()">Search</button>
             </div>
-            <!-- Кнопка авторизации или информация о пользователе -->
-            <div id="auth-section">
-                <div id="auth-button" class="auth-button" onclick="loginVK()">Вход</div>
-                <div id="user-info" class="user-info" style="display: none;">
-                    <img id="user-photo" src="" alt="User Photo">
-                    <span id="user-name"></span>
-                    <button onclick="logoutVK()">Выход</button>
-                </div>
-            </div>
         </div>
     </header>
 
@@ -337,15 +284,6 @@
 
             <!-- Description under the video -->
             <div class="anime-description" id="anime-description"></div>
-
-            <!-- Comments Section -->
-            <div class="comments-section">
-                <h3>Comments</h3>
-                <div id="vk_comments"></div>
-                <div id="login-message" style="display: none;">
-                    <p>Чтобы оставлять комментарии, <a href="#" onclick="loginVK()">войдите через ВКонтакте</a>.</p>
-                </div>
-            </div>
         </div>
 
         <!-- Season List Section -->
@@ -357,6 +295,17 @@
             <div id="films-section" style="display: none;">
                 <h3>Films</h3>
                 <ul id="films-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Новый контейнер для комментариев -->
+    <div class="comments-wrapper">
+        <div class="comments-section">
+            <h3>Comments</h3>
+            <div id="vk_comments"></div>
+            <div id="login-message" style="display: none;">
+                <p>Чтобы оставлять комментарии, <a href="#" onclick="loginVK()">войдите через ВКонтакте</a>.</p>
             </div>
         </div>
     </div>
@@ -408,11 +357,11 @@
 
         // Инициализация виджета комментариев
         function initComments() {
+            const animeTitle = new URLSearchParams(window.location.search).get('title');
             VK.Widgets.Comments("vk_comments", {
                 limit: 10,
                 attach: "*",
-                pageUrl: "https://Androm332.github.io/StandoPower.github.io"
-
+                pageUrl: window.location.origin + window.location.pathname + '?title=' + encodeURIComponent(animeTitle)
             });
         }
 
